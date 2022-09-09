@@ -3,63 +3,44 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Variables
+    private EditText et1;
+    private EditText et2;
+    private TextView tv1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Casamiento vista -- logica (id)
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onCreate",Toast.LENGTH_SHORT).show();
-    }
-    //Methods
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onStart",Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onResume",Toast.LENGTH_SHORT).show();
+        // Enlace entre parte visual y logica
+        et1 = findViewById(R.id.txtnum1); // Formar rapida
+        et2 = (EditText) findViewById(R.id.txtnum2); //Casting
+        tv1 = (TextView) findViewById(R.id.txw_resultado);
 
     }
+    // Metodos
+    public void sumar(View view){
+        //Formato cadena
+        String valor1 = et1.getText().toString();
+        String valor2 = et2.getText().toString();
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onPause",Toast.LENGTH_SHORT).show();
+        int num1 = Integer.parseInt(valor1);
+        int num2 = Integer.parseInt(valor2);
 
-    }
+        int resp = num1 + num2;
 
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onRestart",Toast.LENGTH_SHORT).show();
+        String res = String.valueOf(resp);
 
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onStop",Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        //Clase para mensaje emergentes (Toast)
-        Toast.makeText(this,"Metodo onDestroy",Toast.LENGTH_SHORT).show();
+        tv1.setText(res);
 
     }
 
